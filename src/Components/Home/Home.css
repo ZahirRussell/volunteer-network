@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+
+body {
+    background: linear-gradient( rgba(0,0,0,0.5), rgba(0, 0, 0, 0.5) ), url('../../images/bg.png') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+  }
+.x-navbar{
+  background-color: rgba(0,0,0,0.5)
+}
+.carousel-caption-custom {
+  color: #fff;
+  padding: 10px;
+}
+
+.place-header {
+  font-family: 'Bebas Neue', cursive;
+}
+.place-detail {
+  font-family: 'Montserrat', sans-serif;
+}

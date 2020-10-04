@@ -1,25 +1,49 @@
-import React from 'react';
-import logo from './logo.svg';
+import {  
+  BrowserRouter as Router,
+  Switch,
+  Route } from 'react-router-dom';
+import React, { createContext, useState } from 'react';
+import Home from './Components/Home/Home';
+import Login from './Components/Login/Login';
+import TopMenu from './Components/TopMenu/TopMenu';
+import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 import './App.css';
+import AddEvent from './Components/Events/AddEvent';
+import RegisterUserEvent from './Components/UserEvents/RegisterUserEvent';
+import UserEventList from './Components/UserEvents/UserEventList';
 
+export const UserContext = createContext();
 function App() {
+  const [loggedInUser, setLoggedInUser] = useState({});
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>    
+      <Router>
+            <TopMenu></TopMenu>
+            <Switch>
+              <Route path="/home">
+                <Home />
+              </Route>
+              <Route path="/login">
+                <Login />
+              </Route>
+              <Route path="/addEvent">
+                <AddEvent />
+              </Route>            
+               <PrivateRoute path="/RegisterUserEvent/:title">
+                 <RegisterUserEvent />
+              </PrivateRoute>   
+              <PrivateRoute path="/userEventList">
+                <UserEventList />
+              </PrivateRoute>            
+              <Route exact path="/">
+                <Home />
+              </Route>
+            </Switch>
+        </Router>    
+      </UserContext.Provider>
+
+  
   );
 }
 
