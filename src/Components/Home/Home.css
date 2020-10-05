@@ -8,6 +8,12 @@ body {
     background-size: cover;
     -o-background-size: cover;
   }
+
+  .blur {
+    background: rgba(255, 255, 255, 0.2); 
+    backdrop-filter: blur(8px); 
+    height: 100vh;
+  }
 .x-navbar{
   background-color: rgba(0,0,0,0.5)
 }

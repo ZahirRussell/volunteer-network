@@ -1,8 +1,8 @@
 import {  
   BrowserRouter as Router,
   Switch,
-  Route } from 'react-router-dom';
-import React, { createContext, useState } from 'react';
+  Route, useLocation, withRouter } from 'react-router-dom';
+import React, { createContext, useEffect, useState } from 'react';
 import Home from './Components/Home/Home';
 import Login from './Components/Login/Login';
 import TopMenu from './Components/TopMenu/TopMenu';
@@ -11,19 +11,26 @@ import './App.css';
 import AddEvent from './Components/Events/AddEvent';
 import RegisterUserEvent from './Components/UserEvents/RegisterUserEvent';
 import UserEventList from './Components/UserEvents/UserEventList';
+import AdminHome from './Components/Admin/AdminHome';
+import ScrollToTop from './Components/Utilities/ScrollToTop';
 
 export const UserContext = createContext();
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({});
-  
+
   return (
     <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>    
-      <Router>
-            <TopMenu></TopMenu>
+      <Router>  
+      <ScrollToTop/>
+         <TopMenu></TopMenu>         
             <Switch>
               <Route path="/home">
                 <Home />
               </Route>
+              <Route path="/adminHome">
+                <AdminHome />
+              </Route>
+              
               <Route path="/login">
                 <Login />
               </Route>

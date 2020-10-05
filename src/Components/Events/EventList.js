@@ -1,6 +1,7 @@
 import React from 'react';
-import { Card, CardDeck, Col, Row } from 'react-bootstrap';
+import { Card, CardDeck, Col, Image, Row } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
+import {NoImage} from '../../images/NoImage.jpg'
 
 
 const EventList = (props) => {
@@ -11,30 +12,30 @@ const EventList = (props) => {
         const url = `/RegisterUserEvent/${title}`;
         history.push(url);
     }
+
+    const colors = ["green","yellow","red","purple","orange","pink","cyan"];
+
+    const getColor = ()=>{
+        var len = colors.length;
+        var randomNum = Math.floor(Math.random()*len);
+        var color = colors[randomNum];
+        colors.splice(randomNum, 1);
+        return color;
+    }
    
     return (
         <>
-           
-                {/* <CardDeck style={{display: 'flex', flexDirection: 'row'}}>
-                        <Card style={{flex: 1}}>
-                        <Card.Img variant="top" style={{width:'200px'}} src={require(`../../images/${imageFile}.png`)} />
-                            <Card.Body>
-                            <Card.Title>Card title</Card.Title>
-                            <Card.Text>
-                            {title}
-                            </Card.Text>
-                            </Card.Body>
-                        </Card>              
-                    </CardDeck> */}
-                    <Card style={{ width: 200 }} onClick={() =>handleUserEvents(title)}>
-                        <Card.Img variant="top" style={{width:'200px'}} src={require(`../../images/${imageFile}.png`)} />
-                            <Card.Body>
-                            <Card.Title>Card title</Card.Title>
-                            <Card.Text>
-                            {title}
-                            </Card.Text>
-                            </Card.Body>
-                        </Card>
+
+            <div className="col-md-3" onClick={() =>handleUserEvents(title)}>
+                <div className="card" style={{width: 16 + 'rem', marginTop:'20px',backgroundColor: getColor()}}>
+                  
+                    <img style={{height:'220px'}} className="card-img-top" src={require(`../../images/${imageFile}.png`)} alt="" /> 
+                                   
+                    <div className="card-body">
+                        <h5 className="card-title" style={{color:'white'}}>{title}</h5>
+                    </div>
+                </div>
+            </div> 
         </>
     );
 };

@@ -1,15 +1,16 @@
 import { faCalendar } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
-import { InputGroup } from 'react-bootstrap';
+import { Alert, InputGroup } from 'react-bootstrap';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
+import { useHistory } from 'react-router-dom';
 
 const AddEvent = () => {
-    const initialFormState = { id: null, title: '', description: '', imageFile:'' }
+    const initialFormState = { id: null, title: '', description: '', imageFile:'NoImage' }
     const [eventData, setEventData] = useState(initialFormState)
     const [eventDate, setEventDate] = useState(new Date());
-    
+    const history = useHistory()
 
     const handleInputChange = (event) => {
         const { name, value } = event.target
@@ -25,7 +26,7 @@ const AddEvent = () => {
 
             console.log(eventData);
 
-            fetch("http://localhost:5000/addEvent",{
+            fetch("https://pure-savannah-61339.herokuapp.com/addEvent",{
                 method:'POST',
                 headers: {'Content-Type':'application/json'},
                 body: JSON.stringify(eventData)
@@ -33,16 +34,27 @@ const AddEvent = () => {
             .then(res => res.json())
             .then(result => {
                 console.log(result);
+                alert('Event Added successfully');
+                history.push("/");
             })
         }
 
 
     return (
-        <div style={{marginTop:'100px'}} className="d-flex justify-content-center align-items-center">
+        <div className="d-flex justify-content-center align-items-center">
         <div className="col-1">
         </div>
-        <div className="col-4"> 
-            <form className="form-horizontal addEventForm" onSubmit={handleSubmitEvent}> 
+        <div className="col-4 text-center"> 
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+
+          <Alert variant="success">
+            <Alert.Heading>Add New Event</Alert.Heading>
+            <hr></hr>
+            <form className="form-horizontal" onSubmit={handleSubmitEvent}>               
                     <div className="form-group">
                         <label className="col-md-3 control-label">Title</label>
                         <div className="col-md-9">
@@ -76,14 +88,17 @@ const AddEvent = () => {
                         <label className="col-md-3 control-label">Image</label>
                         <div className="col-md-9">
                         <input id="imageFile" name="imageFile" className="form-control" 
-                        value={eventData.imageFile}  onChange={handleInputChange} required/>
+                          value={eventData.imageFile}  readOnly/>
                         </div>
                      </div>
-                <div className="form-group">
+                <br></br>
+            <div className="form-group">
+                <div className="col-md-9 offset-md-1">                   
                     <input type="submit" value="Add Event" className="btn btn-primary"/>
+                    </div>
                 </div>
             </form> 
-            
+        </Alert>           
            
         </div>
         <div className="col-1">

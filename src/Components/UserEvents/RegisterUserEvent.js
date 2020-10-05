@@ -5,6 +5,7 @@ import ReactDatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import './EventForm.css';
 import { useHistory, useParams } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 
 
 const RegisterUserEvent = () => {
@@ -19,7 +20,7 @@ const RegisterUserEvent = () => {
     const onSubmit = data => {
         console.log(data);
         setSubmittedData(data);
-        fetch('http://localhost:5000/registerEvent', {
+        fetch('https://pure-savannah-61339.herokuapp.com/registerEvent', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
@@ -35,8 +36,17 @@ const RegisterUserEvent = () => {
           })
     };
     return (
-        <div className="container" style={{marginTop:'100px'}}>
-             <form className="event-form" onSubmit={handleSubmit(onSubmit)}>
+        <div className="container">  
+          <div className="col-2">
+          </div>
+          <div className="col-4"> 
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <form className="event-form" onSubmit={handleSubmit(onSubmit)}>
+               <h4 class="text-center">Register Event</h4>
                 <input name="name" defaultValue={loggedInUser.name} ref={register({ required: true })} placeholder="Your Name" />
                 {errors.name && <span className="error">Name is required</span>}
                 
@@ -52,11 +62,15 @@ const RegisterUserEvent = () => {
                 <input name="eventTitle" defaultValue={title} ref={register({ required: true })}  placeholder="Your Event" />
                 {errors.eventTitle && <span className="error">Event Title is required</span>}
                 
-                <input name="books" ref={register({ required: true })}  placeholder="Your Books"/>
-                {errors.books && <span className="error">Books is required</span>}
+                <input name="books" ref={register()}  placeholder="Description"/>
+               
                 
-                <input type="submit" />
-            </form>             
+                <Button type="submit" variant="primary" className="mx-2">Submit</Button>
+            </form>
+          </div> 
+          <div className="col-2">
+          </div>        
+                          
         </div>
     );
 };

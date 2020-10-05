@@ -6,13 +6,14 @@ const Events = () => {
     const [events,setEvents] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/events')
+        fetch('https://pure-savannah-61339.herokuapp.com/events')
         .then(res => res.json())
         .then(result => setEvents(result))
     },[])
 
     return (
-        <div className="container">
+       <div className="container">
+            <div className="row">
                     {
                             events.map(ev => <EventList 
                                 key={ev._id}
@@ -21,6 +22,7 @@ const Events = () => {
                         }
               
         </div>
+       </div>
     );
 };
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Button, Container } from 'react-bootstrap';
+import { Alert, Button, Container } from 'react-bootstrap';
 import { faGoogle } from "@fortawesome/free-brands-svg-icons"
 import { useContext } from 'react';
 import { UserContext } from '../../App';
@@ -34,12 +34,12 @@ const Login = () => {
       }
 
     return (
-        <div style={{marginTop:'100px'}} className="d-flex justify-content-center align-items-center">
+        <div className="d-flex justify-content-center align-items-center">
              <div className="col-1">
              </div>
              <div className="col-6 text-center"> 
 
-            <div className="container">   
+            {/* <div className="container" style={{marginTop:'100px'}}>   
                  <section>				
                  <Container className="text-center text-white">
                   <div className="bg-dark rounded" id="login">
@@ -50,7 +50,16 @@ const Login = () => {
                   </div>
               </Container> 
                  </section>
-             </div>
+             </div> */}
+
+             <Alert variant="danger" style={{marginTop:'100px'}}>
+              <p>
+              <Button className="btn-danger rounded-pill" onClick={googleSignIn}>
+                            <FontAwesomeIcon icon={faGoogle}/> 
+                            &nbsp; Sign in with Google
+                          </Button> 
+              </p>
+            </Alert>
              <div className="col-1">
              </div>
          </div>

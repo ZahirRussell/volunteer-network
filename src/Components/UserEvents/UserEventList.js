@@ -9,7 +9,7 @@ const UserEventList = () => {
 
     
     useEffect(() => {
-        fetch('http://localhost:5000/userEvents?email='+loggedInUser.email,{
+        fetch('https://pure-savannah-61339.herokuapp.com/userEvents?email='+loggedInUser.email,{
             method:'GET',
             headers:{
                 'Content-Type':'application/json'
@@ -29,7 +29,7 @@ const UserEventList = () => {
     }
 
     const removeFromDatabase = (id) =>{
-        fetch(`http://localhost:5000/deleteUserEvent/${id}`,{
+        fetch(`https://pure-savannah-61339.herokuapp.com/deleteUserEvent/${id}`,{
             method:'DELETE',
             headers:{
                 'Content-Type':'application/json'
@@ -41,26 +41,24 @@ const UserEventList = () => {
         });
     }
     return (
-        <div>
+        <div className="container">
             <br></br>
             <br></br>
             <br></br>
             <br></br>
             <br></br>
-         <h3>You Have: {userEvents.length} events.</h3>
-
-             {
+            <span className="text-center">
+                 <h3>You Have: {userEvents.length} events.</h3>
+             </span>
+             <div className="row">             
+                {
                     userEvents.map(event => <UserEventItems 
                         key={event._id}
                         removeUserEvent = {removeUserEvent}
                         event={event}></UserEventItems>)
                 } 
-
-        {/* {
-            userEvents.map(event => <li>Id: {event._id} Title: {event.eventTitle} From:{new Date(event.eventDate).toDateString('dd/MM/yyyy')}</li>)
-        }   */}
-
-</div>
+             </div>
+    </div>
     );
 };
 
