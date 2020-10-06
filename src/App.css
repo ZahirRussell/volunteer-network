@@ -1,15 +1,30 @@
-body {
-  background: linear-gradient( rgba(0,0,0,0.5), rgba(0, 0, 0, 0.5) ), url('images/bg.png') no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  background-size: cover;
-  -o-background-size: cover;
-  
+
+
+
+body {	
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 20px;
+	color: var(--default);
+	background: #f8fafc;
+	position: relative;
 }
 
-h3,h4{
-  color:#fff;
+.bg-home:before {
+	content: "";
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 500px;
+	z-index: -1;
+
+  /* background: linear-gradient(to bottom, rgb(255 255 255 / 85%), rgb(255 255 255 / 85%)),url('images/bg.png'), */
+  background: linear-gradient(to bottom, rgb(255 255 255 / 85%), rgb(255 255 255 / 85%)), url('images/bg.png') no-repeat center center fixed;
+	background-position: top;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
+
 
 .addEventForm {
   display: flex;

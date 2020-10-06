@@ -1,19 +1,17 @@
 import React from 'react';
-import { Card, CardDeck, Col, Image, Row } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
-import {NoImage} from '../../images/NoImage.jpg'
 
 
 const EventList = (props) => {
     console.log(props);
-    const {_id, title, description, eventDate, imageFile } = props.event;
+    const {title,  imageFile } = props.event;
     const history = useHistory();
     const handleUserEvents = (title)=>{
         const url = `/RegisterUserEvent/${title}`;
         history.push(url);
     }
 
-    const colors = ["green","yellow","red","purple","orange","pink","cyan"];
+    const colors = ["green","#FFBD3E","red","purple","orange","pink","cyan"];
 
     const getColor = ()=>{
         var len = colors.length;
@@ -25,17 +23,12 @@ const EventList = (props) => {
    
     return (
         <>
-
-            <div className="col-md-3" onClick={() =>handleUserEvents(title)}>
-                <div className="card" style={{width: 16 + 'rem', marginTop:'20px',backgroundColor: getColor()}}>
-                  
-                    <img style={{height:'220px'}} className="card-img-top" src={require(`../../images/${imageFile}.png`)} alt="" /> 
-                                   
-                    <div className="card-body">
-                        <h5 className="card-title" style={{color:'white'}}>{title}</h5>
-                    </div>
-                </div>
-            </div> 
+        <div className="col-md-3 col-sm-6" onClick={() =>handleUserEvents(title)}>
+				<div className="event-card">
+					<img style={{ maxWidth: "100%" }} src={require(`../../images/${imageFile}.png`)} alt="" />
+					<h4 style={{background: getColor()}}>{title}</h4>
+				</div>
+		</div>
         </>
     );
 };

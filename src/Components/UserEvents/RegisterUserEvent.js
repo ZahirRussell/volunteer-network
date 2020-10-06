@@ -52,11 +52,7 @@ const RegisterUserEvent = () => {
                 
                 <input name="email" defaultValue={loggedInUser.email} ref={register({ required: true })}  placeholder="Your Email"/>
                 {errors.email && <span className="error">Email is required</span>}
-                
-                                           
-                 {/* <ReactDatePicker name="eventDate" selected={eventDate} onChange={date => setEventDate(date)} id="eventDate" ref={register({ required: true })} />
-                {errors.eventDate && <span className="error">Date is required</span>} */}
-                <input  name="eventDate" defaultValue={eventDate} type="date" id="eventDate" ref={register({ required: true })}></input>
+                 <input  name="eventDate" defaultValue={eventDate} type="date" id="eventDate" ref={register({ required: true })}></input>
                 {errors.eventDate && <span className="error">Date is required</span>}
 
                 <input name="eventTitle" defaultValue={title} ref={register({ required: true })}  placeholder="Your Event" />

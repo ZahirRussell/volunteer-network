@@ -1,3 +1,5 @@
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../../App';
 import UserEventItems from './UserEventItems';
@@ -47,9 +49,10 @@ const UserEventList = () => {
             <br></br>
             <br></br>
             <br></br>
-            <span className="text-center">
-                 <h3>You Have: {userEvents.length} events.</h3>
-             </span>
+
+            <div class="alert alert-success" role="alert"> 
+             <h3><FontAwesomeIcon icon={faInfoCircle}/>&nbsp;  Hi {loggedInUser.name}! You have registered for: <span class="badge badge-pill badge-primary"> {userEvents.length}</span> events.</h3>
+            </div>
              <div className="row">             
                 {
                     userEvents.map(event => <UserEventItems 

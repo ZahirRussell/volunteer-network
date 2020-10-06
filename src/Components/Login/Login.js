@@ -4,10 +4,11 @@ import { Alert, Button, Container } from 'react-bootstrap';
 import { faGoogle } from "@fortawesome/free-brands-svg-icons"
 import { useContext } from 'react';
 import { UserContext } from '../../App';
-import { useHistory, useLocation } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import { initializeLoginFramework, handleGoogleSignIn} from './LoginManager';
 import * as firebase from "firebase/app";
 import "firebase/auth";
+import './Login.css';
 
 const Login = () => {
 
@@ -38,28 +39,19 @@ const Login = () => {
              <div className="col-1">
              </div>
              <div className="col-6 text-center"> 
-
-            {/* <div className="container" style={{marginTop:'100px'}}>   
-                 <section>				
-                 <Container className="text-center text-white">
-                  <div className="bg-dark rounded" id="login">
-                  <Button className="btn-danger rounded-pill" onClick={googleSignIn}>
-                            <FontAwesomeIcon icon={faGoogle}/> 
-                            &nbsp; Sign in with Google
-                          </Button>                                           
-                  </div>
-              </Container> 
-                 </section>
-             </div> */}
-
-             <Alert variant="danger" style={{marginTop:'100px'}}>
-              <p>
-              <Button className="btn-danger rounded-pill" onClick={googleSignIn}>
-                            <FontAwesomeIcon icon={faGoogle}/> 
-                            &nbsp; Sign in with Google
-                          </Button> 
-              </p>
-            </Alert>
+            	<div className="container d-flex align-items-center justify-content-center py-5 my-5">
+                <div className="login-form p-md-5 p-3">
+                  <h3 className="mb-5 font-weight-bold text-dark">Login With</h3>
+                  <button className="btn btn-outline-secondary rounded-pill" onClick={googleSignIn}>
+                  <span className="text-danger font-weight-bold"> <FontAwesomeIcon icon={faGoogle}/> &nbsp;
+                    Continue with Google</span>
+                  </button>
+                  <span className="mt-3">
+                    <span>Don’t have an account?</span>
+                    <Link to="/login" className="text-decoration-none">&nbsp; Create an account</Link>
+                  </span>
+                </div>
+              </div>
              <div className="col-1">
              </div>
          </div>

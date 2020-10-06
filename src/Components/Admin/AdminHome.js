@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Button } from 'react-bootstrap';
+import { Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 const AdminHome = () => {
 
@@ -39,10 +39,15 @@ const AdminHome = () => {
             <div className="mt-5">
                 <h3>Create New Event</h3>
                 <Link to="/addEvent">
-                    <Button variant="primary" className="mx-2">Add Event</Button>
+                    <Button variant="primary" className="mx-2">  <FontAwesomeIcon icon={faPlus}/> 
+                                        &nbsp;Add Event</Button>
                 </Link>
             </div>
             <div className="mt-5">
+            <Card border="primary" style={{ width: '50rem' }}>
+                <Card.Header>Registered Event Tasks</Card.Header>
+                <Card.Body>
+                <Card.Text>
                 <table className="table table-responsive">
                     <thead className="thead-light"> 
                         <tr>
@@ -76,6 +81,9 @@ const AdminHome = () => {
 
                     </tbody>
                 </table>
+                </Card.Text>
+                </Card.Body>
+            </Card>
             </div>
         </div> 
     );

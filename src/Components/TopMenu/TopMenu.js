@@ -17,10 +17,10 @@ const TopMenu = () => {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav" className="text-center">
                     <Nav className="ml-auto">
-                        <Nav.Link className="text-white">Home</Nav.Link>
-                        <Nav.Link className="text-white">Donation</Nav.Link>
-                        <Nav.Link className="text-white">Events</Nav.Link>
-                        <Nav.Link className="text-white">Blog</Nav.Link>
+                        <Nav.Link className="text-dark">Home</Nav.Link>
+                        <Nav.Link className="text-dark">Donation</Nav.Link>
+                        <Nav.Link className="text-dark">Events</Nav.Link>
+                        <Nav.Link className="text-dark">Blog</Nav.Link>
                         <Link to="/login">
                                 <Button variant="primary" className="mx-2">Register</Button>
                         </Link>
