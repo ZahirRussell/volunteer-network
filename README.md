@@ -1,7 +1,7 @@
 ![](https://ibb.co/7z1n9rn)
 # [Volunteer Network](https://volunteernetwork-mern.web.app/) 
 
-This is a network of volunteer activities website. Volunteer Network provides a platform for enroll users to any volunteer event.
+This is a network of volunteer activities website. Volunteer Network provides a platform for enrolling users in any volunteer event.
 
 
 ### Features
